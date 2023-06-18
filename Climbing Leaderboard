@@ -1,0 +1,27 @@
+public static List<Integer> climbingLeaderboard(List<Integer> ranked, List<Integer> player) {
+        int n = ranked.size();
+        List<Integer> scores = new ArrayList<Integer>(); //arrayList without any repetition of integer.
+        List<Integer> res = new ArrayList<Integer>();
+        for (int i = 0; i < n; i++){
+            int score = ranked.get(i);
+            if (scores.size() == 0 || scores.get(scores.size() - 1) != score)
+                scores.add(score);
+        }
+        int m = player.size();
+        for (int i = 0; i < m; i++){
+            int score = player.get(i);
+            int min = 0;
+            int max = scores.size();
+            while (max > min){
+                int mid = (min + max) / 2;
+                if (scores.get(mid) <= score)
+                    max = mid;
+                else
+                    min = mid + 1;
+            }
+            res.add(min + 1);
+        }
+        
+        return res;
+    }
+}
