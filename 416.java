@@ -24,7 +24,6 @@ class Solution {
                 dp[i][j] = -1;
             }
         }
-        // dp[nums.length] = -1;
         if(sum%2 != 0)return false;
         sum = sum/2;
         return find(nums.length-1, nums, sum, dp);
